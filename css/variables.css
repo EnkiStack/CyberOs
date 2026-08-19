@@ -1,0 +1,23 @@
+:root{
+
+    --bg:#090B12;
+
+    --glass:rgba(20,20,35,.35);
+
+    --glass-border:rgba(255, 255, 255, 0.12);
+
+    --cyan:#00E5FF;
+
+    --purple:#7C4DFF;
+
+    --yellow:#FFD54F;
+
+    --red:#FF3D5A;
+
+    --text:#F5F5F5;
+
+    --radius:22px;
+
+    --background-block: rgba(15, 15, 25, 0.75);
+
+}

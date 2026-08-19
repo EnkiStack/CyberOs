@@ -1,0 +1,96 @@
+.music-player {
+    
+    bottom: 20px;
+    right: 20px;
+
+    min-width: 320px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--background-block);
+    backdrop-filter: blur(15px);
+
+    border: 1px solid var(--glass-border);
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+
+    color: white;
+    z-index: 9999;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 25px;
+
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.music-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #7c3aed;
+    font-size: 22px;
+
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.6);
+}
+
+.song-name {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.song-status {
+    margin-top: 3px;
+
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.play-btn {
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    background: #7c3aed;
+    color: white;
+
+    font-size: 16px;
+
+    transition: 0.2s;
+}
+
+.play-btn:hover {
+    transform: scale(1.08);
+    background: #8b5cf6;
+}
+
+#progress {
+    flex: 1;
+    cursor: pointer;
+}
