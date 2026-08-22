@@ -107,6 +107,7 @@
 
 .animate-fade-in-left {
   animation: fade-in-left 0.6s ease both;
+
 }
 
 .animate-fade-in-right {
@@ -141,38 +142,13 @@
    Задержки
    ======================================== */
 
-.delay-1 {
-  animation-delay: 3.9s;
+/* Ensure animated elements start hidden to avoid FOUC */
+.animate-fade-in,
+.animate-fade-in-left,
+.animate-fade-in-right,
+.animate-fade-in-up,
+.animate-fade-in-down,
+.animate-zoom-in {
+  opacity: 0;
 }
 
-.delay-2 {
-  animation-delay: 4.0s;
-}
-
-.delay-3 {
-  animation-delay: 4.1s;
-}
-
-.delay-4 {
-  animation-delay: 4.2s;
-}
-
-.delay-5 {
-  animation-delay: 4.3s;
-}
-
-.delay-6 {
-  animation-delay: 4.4s;
-}
-
-.delay-7 {
-  animation-delay: 4.5s;
-}
-
-.delay-8 {
-  animation-delay: 4.6s;
-}
-
-.delay-9 {
-  animation-delay: 4.7s;
-}

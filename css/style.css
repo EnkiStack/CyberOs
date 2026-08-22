@@ -2,12 +2,12 @@
 @import "animations.css";
 @import "./components/links.css";
 @import "./components/musicplayer.css";
+@import "./components/settings.css";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
 }
 
 body {
@@ -51,10 +51,16 @@ body {
 }
 
 #clock {
-  font-size: 80px;
+  font-size: 100px;
+  color: var(--text);
+  transition: 0.4s;
 
-  color: var(--cyan);
+  &:hover {
+    color: var(--purple);
+    scale: 1.04;
+  }
 }
+
 
 .subtitle {
   margin-top: 15px;
@@ -62,9 +68,24 @@ body {
   color: #ccc;
 }
 
-.search-box {
-  width: 700px;
+.search-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  border-radius: 16px;
+
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: 0 0 10px var(--purple);
+  }
+}
+
 
 .search-box input {
   width: 100%;
@@ -81,30 +102,22 @@ body {
 .search-box-items {
   display: flex;
   align-items: center;
-}
 
-.youtube {
-  width: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid blueviolet;
-  padding: 18px;
-  border-radius: 16px;
+  min-width: 650px;
 }
 
 .youtube-icon {
+  position: absolute;
   width: 30px;
   height: 30px;
   margin-right: 10px;
-  vertical-align: middle;
+
+  left: 40px;
+  z-index: 1;
 }
 
 #searchVid {
-  color: red;
-  border-color: deeppink;
-  padding: 8px;
-  border-radius: 6px;
+  padding-left: 62px !important;
 }
 
 #searchVid::after {
@@ -216,11 +229,16 @@ main {
 }
 
 .SearchImages {
-  position: relative;
+  position: absolute;
   width: 30px;
-  top: 49px;
+
   z-index: 1;
-  left: 17px;
+  left: 38px;
+}
+
+.SearchImages img {
+  position: absolute;
+  top: 16px;
 }
 
 .yandex-icon {
@@ -239,4 +257,28 @@ main {
   flex-direction: column;
   gap: 8px;
   padding: 30px;
+}
+
+.search-engine {
+  position: absolute;
+  right: 33px;
+  padding: 8px;
+
+  background-color: transparent;
+  color: var(--text);
+  border-radius: var(--radius);
+
+  border-color: var(--glass-border);
+
+  transition: 0.4s ease;
+
+  &:hover {
+    background-color: var(--purple);
+    box-shadow: 0 0 8px var(--purple);
+  }
+}
+
+
+.control-btn:hover {
+  scale: 1.02;
 }

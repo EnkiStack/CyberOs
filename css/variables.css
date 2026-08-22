@@ -1,23 +1,26 @@
-:root{
+:root {
+  --bg: #090b12;
 
-    --bg:#090B12;
+  --glass: rgba(20, 20, 35, 0.35);
 
-    --glass:rgba(20,20,35,.35);
+  --glass-border: rgba(255, 255, 255, 0.12);
 
-    --glass-border:rgba(255, 255, 255, 0.12);
+  --cyan: #00e5ff;
 
-    --cyan:#00E5FF;
+  --purple: #7c4dff;
 
-    --purple:#7C4DFF;
+  --transparent-block: #a17fff72;
 
-    --yellow:#FFD54F;
+  --yellow: #ffd54f;
 
-    --red:#FF3D5A;
+  --red: #ff3d5a;
 
-    --text:#F5F5F5;
+  --text: #f5f5f5;
 
-    --radius:22px;
+  --radius: 6px;
 
-    --background-block: rgba(15, 15, 25, 0.75);
+  --radius-block: 22px;
 
+  --background-block: rgba(15, 15, 25, 0.75);
 }
+
