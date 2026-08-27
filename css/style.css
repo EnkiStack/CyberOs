@@ -3,6 +3,15 @@
 @import "./components/links.css";
 @import "./components/musicplayer.css";
 @import "./components/settings.css";
+@import "./components/nofications.css";
+
+@font-face {
+    font-family: "Pixelify Sans";
+    src: url("../assets/fonts/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf") format("truetype");
+    font-weight: 100 900;
+    font-style: normal;
+}
+
 
 * {
   margin: 0;
@@ -10,17 +19,17 @@
   box-sizing: border-box;
 }
 
+button {
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 18px !important;
+}
+
 body {
-  font-family: Arial, sans-serif;
-
+  font-family: "Pixelify Sans", sans-serif;
   background: var(--bg);
-
   color: white;
-
   height: 100vh;
-
   overflow: hidden;
-
   font-size: bold;
 }
 
@@ -37,7 +46,7 @@ body {
 .dashboard {
   position: relative;
   padding: 20px;
-  z-index: 10;
+  z-index: 1;
   height: 100vh;
   display: grid;
   flex-direction: column;

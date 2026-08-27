@@ -1,0 +1,55 @@
+.nofications {
+  display: none;
+  z-index: 2;
+  min-width: 20px;
+}
+
+.nofications-container {
+  position: absolute;
+  top: 220px;
+  padding: 70px;
+  gap: 20px;
+  min-width: 404px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: var(--radius-block);
+  background-color: var(--glass);
+}
+
+.nofications img {
+  width: 200px;
+}
+
+#textNofication {
+  font-size: 24px;
+  text-align: center;
+}
+
+.okey-btn {
+  width: 100%;
+}
+
+
+.nofications {
+  display: none;
+
+  position: fixed;
+  inset: 0;
+
+  justify-content: center;
+  align-items: center;
+
+  z-index: 99999;
+
+  background: rgba(0, 0, 0, 0.3);
+
+  backdrop-filter: blur(8px);
+}
+
+.nofications.show {
+  display: flex;
+}

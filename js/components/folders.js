@@ -1,3 +1,5 @@
+import { noficationsLog } from "../components/nofication.js";
+
 export function initFolders() {
   const addFolderBtn = document.getElementById("addFolderBtn");
   const addLinkBtn = document.getElementById("addLinkBtn");
@@ -35,6 +37,7 @@ export function initFolders() {
 
     localStorage.setItem(`folder_${folderId}`, isOpen ? "open" : "closed");
   }
+
 
   // Отображение папки
   function renderFolder(name) {
@@ -78,12 +81,12 @@ export function initFolders() {
     const name = folderNameInput.value.trim();
 
     if (!name) {
-      alert("Введите название папки :(");
+      noficationsLog("Введите название папки :(");
       return;
     }
 
     if (folders.includes(name)) {
-      alert("Папка уже существует :(");
+      noficationsLog("Папка уже существует :(");
       return;
     }
 
@@ -126,7 +129,7 @@ export function initFolders() {
     const openFolder = document.querySelector(".folder.open");
 
     if (!openFolder) {
-      alert("Откройте папку, в которую хотите добавить ссылку");
+      noficationsLog("Откройте папку, в которую хотите добавить ссылку");
       return;
     }
 
@@ -167,16 +170,14 @@ export function initFolders() {
     const url = linkUrlInput.value.trim();
 
     if (!nameLink || !url) {
-      alert("Введите название и URL");
+      noficationsLog("Введите название и URL");
       return;
     }
 
     if (!url.startsWith("http://") && !url.startsWith("https://")) {
-      alert("URL должен начинаться с http:// или https://");
+      noficationsLog("URL должен начинаться с http:// или https://");
       return;
     }
-
-    renderLink(link);
 
     const folderId =
       selectedFolder.querySelector(".folder-header").dataset.folder;
@@ -187,23 +188,35 @@ export function initFolders() {
       folderId: folderId,
     };
 
+    renderLink(newLink);
+
     links.push(newLink);
 
     localStorage.setItem("links", JSON.stringify(links));
 
+    const content = selectedFolder.querySelector(".folder-content");
     const deleteBtn = content.querySelector('[data-link="' + nameLink + '"]');
 
     deleteBtn.addEventListener("click", () => {
       deleteBtn.parentElement.remove();
+      links = links.filter((link) => link.nameLink !== nameLink);
+      localStorage.setItem("links", JSON.stringify(links));
     });
 
     linkModal.classList.remove("show");
   }
 
+  const linkConfirmBtn = document.getElementById("linkConfirmBtn");
+  linkConfirmBtn.addEventListener("click", createLink);
+
   linkUrlInput.addEventListener("keydown", (event) => {
-    if (event === "Enter") {
+    if (event.key === "Enter") {
       createLink();
     }
+  });
+
+  document.getElementById("linkCancelBtn").addEventListener("click", () => {
+    linkModal.classList.remove("show");
   });
 
   // Удаление папки
@@ -211,7 +224,7 @@ export function initFolders() {
     const openFolder = document.querySelector(".folder.open");
 
     if (!openFolder) {
-      alert("Откройте папку, которую хотите удалить");
+      noficationsLog("Откройте папку, которую хотите удалить");
       return;
     }
 
