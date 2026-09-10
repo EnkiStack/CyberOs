@@ -340,7 +340,7 @@ function App() {
           <Search />
 
           <div className="box-buttom">
-            {Array.from({ length: 5 }).map((_, index) => (
+            {Array.from({ length: 3 }).map((_, index) => (
               <button
                 key={index}
                 type="button"
