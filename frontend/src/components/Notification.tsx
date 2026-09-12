@@ -1,10 +1,32 @@
-const notifications = ['System update complete', 'New mission unlocked']
+export type NotificationTone = 'info' | 'success' | 'warning' | 'error'
 
-export function Notification() {
+export type NotificationItem = {
+  id: string
+  message: string
+  tone?: NotificationTone
+}
+
+type NotificationProps = {
+  items: NotificationItem[]
+}
+
+export function Notification({ items }: NotificationProps) {
+  if (items.length === 0) {
+    return null
+  }
+
   return (
-    <div className="notification-list" aria-label="Notifications">
-      {notifications.map((message) => (
-        <span key={message}>{message}</span>
+    <div className="notification-layer" aria-live="polite" aria-label="Notifications">
+      {items.map((item) => (
+        <div
+          key={item.id}
+          className={`notification-toast ${item.tone ?? 'info'}`}
+        >
+          <span className="notification-icon">
+            {item.tone === 'success' ? '✓' : item.tone === 'warning' ? '⚠' : item.tone === 'error' ? '⛔' : 'ℹ'}
+          </span>
+          <span>{item.message}</span>
+        </div>
       ))}
     </div>
   )

@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from 'react'
+
 export type FolderItem = {
   id: string
   name: string
@@ -19,7 +21,7 @@ type FoldersProps = {
 
 function getCurrentFolderContents(allItems: FolderItem[], pathIds: string[]): FolderItem[] {
   let current = allItems
-  
+
   for (const id of pathIds) {
     const folder = current.find(item => item.id === id && item.kind === 'folder')
     if (folder && folder.children) {
@@ -28,7 +30,7 @@ function getCurrentFolderContents(allItems: FolderItem[], pathIds: string[]): Fo
       return allItems
     }
   }
-  
+
   return current
 }
 
@@ -42,23 +44,67 @@ export function Folders({
   onNavigate,
   onDeleteRequest,
 }: FoldersProps) {
+  const [hoveredFolderId, setHoveredFolderId] = useState<string | null>(null)
+  const closeTimerRef = useRef<number | null>(null)
+
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current) {
+        window.clearTimeout(closeTimerRef.current)
+      }
+    }
+  }, [])
+
+  const scheduleClose = (folderId: string) => {
+    if (closeTimerRef.current) {
+      window.clearTimeout(closeTimerRef.current)
+    }
+
+    closeTimerRef.current = window.setTimeout(() => {
+      setHoveredFolderId((current) => (current === folderId ? null : current))
+    }, 1100)
+  }
+
   const currentItems = items
 
   const renderBranch = (branchItems: FolderItem[], level = 0): JSX.Element[] =>
     branchItems.map((item) => {
-      const isExpanded = item.kind === 'folder' && expandedFolderIds.includes(item.id)
+      const isExpanded = item.kind === 'folder' && (expandedFolderIds.includes(item.id) || hoveredFolderId === item.id)
       const isCurrentFolder = currentPathIds[currentPathIds.length - 1] === item.id
 
       return (
-        <div key={item.id} className="folder-node" style={{ marginLeft: level > 0 ? 14 : 0 }}>
-          <div className={`folder-item ${selectedId === item.id ? 'is-selected' : ''} ${deleteMode ? 'is-delete-mode' : ''} ${item.kind === 'link' ? 'is-link' : ''} ${isCurrentFolder ? 'is-current-folder' : ''}`}>
+        <div
+          key={item.id}
+          className="folder-node"
+          style={{ marginLeft: level > 0 ? 14 : 0 }}
+          onMouseEnter={() => {
+            if (item.kind !== 'folder') {
+              return
+            }
+
+            if (closeTimerRef.current) {
+              window.clearTimeout(closeTimerRef.current)
+              closeTimerRef.current = null
+            }
+
+            setHoveredFolderId(item.id)
+          }}
+          onMouseLeave={() => {
+            if (item.kind !== 'folder') {
+              return
+            }
+
+            scheduleClose(item.id)
+          }}
+        >
+          <div className={`folder-item ${selectedId === item.id ? 'is-selected' : ''} ${deleteMode ? 'is-delete-mode' : ''} ${item.kind === 'link' ? 'is-link' : ''} ${isCurrentFolder ? 'is-current-folder' : ''} ${isExpanded ? 'is-open' : ''}`}>
             <button
               type="button"
               className="folder-item-main"
               onClick={() => onSelect(item)}
             >
               <span className="folder-main">
-                <span className="folder-icon">{item.kind === 'folder' ? '📁' : '🔗'}</span>
+                <span className="folder-icon">{item.kind === 'folder' ? (isExpanded ? '📂' : '📁') : '🔗'}</span>
                 <span className="folder-name">{item.name}</span>
               </span>
               {item.kind === 'folder' && item.children && item.children.length > 0 && (
