@@ -45,23 +45,7 @@ const readSavedMusic = (): Array<{ title: string; src: string }> => {
 };
 
 const initialFolders: FolderItem[] = [
-  {
-    id: "projects",
-    name: "Projects",
-    kind: "folder",
-    children: [
-      { id: "github", name: "GitHub", kind: "link", url: "https://github.com" },
-      {
-        id: "work-tools",
-        name: "Work tools",
-        kind: "folder",
-        children: [
-          { id: "figma", name: "Figma", kind: "link", url: "https://www.figma.com" },
-          { id: "notion", name: "Notion", kind: "link", url: "https://www.notion.so" },
-        ],
-      },
-    ],
-  },
+
   {
     id: "archive",
     name: "Archive",
