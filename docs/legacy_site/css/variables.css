@@ -1,0 +1,26 @@
+:root {
+  --bg: #090b12;
+
+  --glass: rgba(20, 20, 35, 0.35);
+
+  --glass-border: rgba(255, 255, 255, 0.12);
+
+  --cyan: #00e5ff;
+
+  --purple: #7c4dff;
+
+  --transparent-block: #a17fff72;
+
+  --yellow: #ffd54f;
+
+  --red: #ff3d5a;
+
+  --text: #f5f5f5;
+
+  --radius: 6px;
+
+  --radius-block: 22px;
+
+  --background-block: rgba(15, 15, 25, 0.75);
+}
+

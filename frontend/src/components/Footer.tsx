@@ -27,6 +27,7 @@ function Footer() {
           <span className="footer-icon">{icon}</span>
           <span>{label}</span>
         </a>
+        
       ))}
     </>
   )

@@ -1,0 +1,27 @@
+.box-buttom {
+    border-radius: var(--radius-block);
+    display: flex;
+    justify-content: center;
+
+    padding: 22px;
+    gap: 14px;
+
+    background-color: var(--glass);
+}
+
+.box-buttom button {
+
+    background-color: var(--bg);
+    color: var(--text);
+    padding: 10px;
+    border-radius: var(--radius);
+    border: none;
+    transition: 0.4s;
+
+    &:hover {
+        background-color: var(--purple);
+        box-shadow: 0 0 8px var(--purple);
+        scale: 1.1;
+        translate: 0px -8px;
+    }
+}
